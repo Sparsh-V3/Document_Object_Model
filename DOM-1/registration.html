@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+	<input type="text" name="name" id="name">
+	<select id="gender">
+		<option value="">--</option>
+		<option value="male">M</option>
+		<option value="female">F</option>
+	</select>
+	<input type="text" name="email" id="email">
+	<input type="text" name="mobile" id="mobile">
+	<hr>
+	<h1 id="dName">NAME</h1>
+	<h2 id="dGender">GENDER</h2>
+	<h3 id="dEmail">EMAIL</h3>
+	<h4 id="dMobile">MOBILE</h4>
+	<hr>
+	<button onclick="showName()">NAME</button>
+	<button onclick="showGender()">GENDER</button>
+	<button onclick="showEmail()">EMAIL</button>
+	<button onclick="showMobile()">MOBILE</button>
+	<button onclick="resetForm()">RESET FORM</button>
+	<button onclick="resetDisplay()">RESET DISPLAY</button>
+	<script type="text/javascript">
+        let n = document.getElementById("name"),
+            g = document.getElementById("gender"),
+            em = document.getElementById("email"),
+            mob = document.getElementById("mobile"),
+            first_h = document.getElementById("dName"),
+            second_h = document.getElementById("dGender"),
+            third_h = document.getElementById("dEmail"),
+            fourth_h = document.getElementById("dMobile");
+		function showName() {
+			first_h.innerText = n.value;
+		}
+
+		function showGender() {
+			second_h.innerText = g.value;
+		}
+
+		function showEmail() {
+			third_h.innerText = em.value;
+		}
+
+		function showMobile() {
+			fourth_h.innerText = mob.value;
+		}
+
+		function resetForm() {
+			n.value = "";
+            g.value = "";
+            em.value = "";
+            mob.value = "";
+		}
+
+		function resetDisplay() {
+			first_h.innerText = "NAME";
+            second_h.innerText = "GENDER";
+            third_h.innerText = "EMAIL";
+            fourth_h.innerText = "MOBILE";
+		}
+	</script>
+</body>
+</html>

@@ -165,14 +165,19 @@
     enter.addEventListener("click", function(){
         if(Number(score.innerText) < Number(min.innerText)){
             min.innerText = score.innerText
+            emptyCheck = true;
             score.innerText = "#";
         }
         else if(Number(score.innerText) > Number(max.innerText)){
             max.innerText = score.innerText;
+            emptyCheck = true;
             score.innerText = "#";
         }
         else
+        {
+            emptyCheck = true;
             score.innerText = "#";
+        }
     })
 
 </script>

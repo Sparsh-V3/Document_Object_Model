@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+            width: 45%;
+            display: flex;
+            margin: auto;
+            justify-content: space-evenly;
+            min-height: 10vh;
+            > #min{
+                text-align: center;
+                font-size: 30px;
+                font-weight: bolder;
+                padding-top: 20px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                width: 30%;
+            }
+            > #max{
+                text-align: center;
+                font-size: 30px;
+                font-weight: bolder;
+                padding-top: 20px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                width: 30%;
+            }
+        }
+        .sub_h{
+            width: 40%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            > h1{
+                text-align: center;
+            }
+        }
+        h1{
+            width: 42%;
+            text-align: center;
+            margin: 10px auto;
+        }
+        #score{
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+            text-align: center;
+            padding-top: 30px;
+            font-size: 30px;
+            font-weight: bolder;
+            width: 20%;
+            margin: 5px auto;
+            min-height: 10vh;
+        }
+        .digits{
+            width: 20%;
+            margin: 15px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 90px);
+            grid-template-rows: repeat(3, 90px);
+            justify-content: center;
+            grid-gap: 15px;
+            > div{
+                transition: transform .5s;
+                cursor: pointer;
+                text-align: center;
+                padding-top: 30px;
+                font-size: 30px;
+                font-weight: bolder;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+        }
+        .digits>div:hover{
+            transform: scale(1.09);
+            background-color: rgb(75, 75, 75);
+            color: white;
+        }
+        #zero{
+            cursor: pointer;
+            transition: transform .5s;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            height: 54px;
+            padding-top: 30px;
+            font-size: 30px;
+            font-weight: bolder;
+            width: 87px;
+            margin: 15px auto;
+            text-align: center;
+        }
+        #zero:hover{
+            transform: scale(1.09);
+            background-color: rgb(75, 75, 75);
+            color: white;
+        }
+        #enter{
+            background-color: rgb(27, 21, 21);
+            color: white;
+            cursor: pointer;
+            width: 20%;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 30px;
+            font-weight: bolder;
+            margin: auto;
+            height: 54px;
+            transition: transform .5s;
+        }
+        #enter:hover{
+            transform: scale(1.09);
+            background-color: white;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div id="min">43</div>
+        <div id="max">2019</div>
+    </div>
+    <div class="sub_h">
+        <h1>MIN</h1>
+        <h1>MAX</h1>
+    </div>
+    <h1>SCORE</h1>
+    <div id="score">#</div>
+    <div class="digits">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+    <div id="zero">0</div>
+    <div id="enter">ENTER</div>
+</body>
+</html>
+<script>
+    let num1_9 = document.querySelectorAll(".digits > div");
+        score = document.getElementById("score"),
+        zero = document.getElementById("zero");
+        emptyCheck = true,
+        enter = document.getElementById("enter"),
+        min = document.getElementById("min"),
+        max = document.getElementById("max");
+
+    for(let i = 0; i < num1_9.length; i++)
+    num1_9[i].addEventListener("click", function(){
+        if(emptyCheck){
+            emptyCheck = false;
+            score.innerText="";
+        }
+        score.innerText+=num1_9[i].innerText+"";
+    })
+    zero.addEventListener("click",function(){
+        if(emptyCheck){
+            emptyCheck = false;
+            score.innerText="";
+        }
+        score.innerText+=zero.innerText+""
+    });
+    enter.addEventListener("click", function(){
+        if(Number(score.innerText) < Number(min.innerText)){
+            min.innerText = score.innerText
+            score.innerText = "#";
+        }
+        else if(Number(score.innerText) > Number(max.innerText)){
+            max.innerText = score.innerText;
+            score.innerText = "#";
+        }
+        else
+            score.innerText = "#";
+    })
+
+</script>
